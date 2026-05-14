@@ -25,3 +25,11 @@ export function getPosts() {
 export function getPostsByUser(userId) {
   return request(`/posts?userId=${userId}`)
 }
+
+export function getPost(postId) {
+  return request(`/posts/${postId}`)
+}
+
+export function getPostComments(postId) {
+  return request(`/posts/${postId}/comments`)
+}
