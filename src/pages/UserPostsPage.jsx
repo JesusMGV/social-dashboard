@@ -28,8 +28,11 @@ function UserPostsPage() {
 
   return (
     <section>
-      <h1 className="mb-4 text-2xl font-bold">
-        Posts by {user ? user.name : `user ${userId}`}
+      <p className="mb-2 text-sm font-bold uppercase text-emerald-700">
+        Posts by
+      </p>
+      <h1 className="mb-4 text-2xl font-bold text-gray-900">
+        {user ? user.name : `User ${userId}`}
       </h1>
 
       {loading && <LoadingMessage message="Loading posts..." />}

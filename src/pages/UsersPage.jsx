@@ -24,13 +24,15 @@ function UsersPage() {
 
   return (
     <section>
-      <h1 className="mb-4 text-2xl font-bold">Users</h1>
+      <h1 className="mb-4 text-sm font-bold uppercase text-emerald-700">
+        Users
+      </h1>
 
       {loading && <LoadingMessage message="Loading users..." />}
       {error && <ErrorMessage message={error} />}
 
       {!loading && !error && (
-        <div className="grid gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           {users.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}

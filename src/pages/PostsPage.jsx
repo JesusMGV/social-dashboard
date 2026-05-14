@@ -31,7 +31,9 @@ function PostsPage() {
 
   return (
     <section>
-      <h1 className="mb-4 text-2xl font-bold">Posts</h1>
+      <h1 className="mb-4 text-sm font-bold uppercase text-emerald-700">
+        Posts
+      </h1>
 
       {loading && <LoadingMessage message="Loading posts..." />}
       {error && <ErrorMessage message={error} />}
