@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CommentCard from '../components/CommentCard'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingMessage from '../components/LoadingMessage'
@@ -7,7 +7,6 @@ import { getPost, getPostComments, getUser } from '../lib/api'
 
 function PostDetailPage() {
   const { postId } = useParams()
-  const navigate = useNavigate()
   const [post, setPost] = useState(null)
   const [user, setUser] = useState(null)
   const [comments, setComments] = useState([])
@@ -38,13 +37,9 @@ function PostDetailPage() {
 
   return (
     <section>
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-        className="mb-4 text-blue-600 hover:underline"
-      >
+      <Link to="/posts" className="mb-4 inline-block text-blue-600 hover:underline">
         Back
-      </button>
+      </Link>
 
       {loading && <LoadingMessage message="Loading post..." />}
       {error && <ErrorMessage message={error} />}
