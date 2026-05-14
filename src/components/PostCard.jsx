@@ -1,0 +1,19 @@
+import { Link } from 'react-router-dom'
+
+function PostCard({ post }) {
+  return (
+    <div className="rounded border bg-white p-4">
+      <h2 className="text-xl font-bold">{post.title}</h2>
+      <p className="mt-2 text-gray-600">{post.body}</p>
+
+      <Link
+        to={`/posts/${post.id}`}
+        className="mt-4 inline-block text-blue-600 hover:underline"
+      >
+        View comments
+      </Link>
+    </div>
+  )
+}
+
+export default PostCard

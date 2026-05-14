@@ -13,3 +13,7 @@ async function request(path) {
 export function getUsers() {
   return request('/users')
 }
+
+export function getPostsByUser(userId) {
+  return request(`/posts?userId=${userId}`)
+}
