@@ -36,7 +36,7 @@ function App() {
   if (loading) {
     return (
       <main className="min-h-screen bg-gray-100 p-6">
-        <div className="mx-auto mt-20 max-w-md rounded border bg-white p-6">
+        <div className="mx-auto mt-20 max-w-md rounded-md border border-gray-200 bg-white p-6 shadow-sm">
           <p className="text-gray-600">Checking login...</p>
         </div>
       </main>

@@ -1,16 +1,69 @@
-# React + Vite
+# Social Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React dashboard for viewing users, posts, and comments from the JSONPlaceholder API. The app uses GitHub OAuth for login and runs on Cloudflare Pages.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Setup
 
-## React Compiler
+Install dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Environment Variables
+
+For local Pages testing, copy the example file:
+
+```bash
+cp .env.example .dev.vars
+```
+
+Required variables:
+
+```bash
+GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET
+SESSION_SECRET
+OAUTH_REDIRECT_URI
+```
+
+For local development, the GitHub OAuth callback URL should be:
+
+```txt
+http://localhost:8788/api/auth/callback
+```
+
+## FOR PRODUCTION 
+`OAUTH_REDIRECT_URI` should match the callback URL, for example:
+
+```txt
+https://your-site.pages.dev/api/auth/callback
+```
+
+Run the app with Cloudflare Pages Functions locally:
+
+```bash
+npm run pages:dev
+```
+
+## Tech Choices
+
+- React
+- Vite
+- React Router
+- Tailwind CSS
+- Cloudflare Pages Functions
+- Github OAuth
+
+
+## Notes
+
+The challenge says "Click post -> view comments." I kept a clear "View comments" action on each post instead of making the whole card clickable, because the post body is readable text and full-card clicks can be easy to trigger by accident.
+
+## Challenges
+
+The biggest challenge was the time constraint, this lead to less testing that I would have liked to do, so quality was impacted, also I was not able to learn as much as I would have liked about Cloudflare pages and Github Oauth.
+
+
