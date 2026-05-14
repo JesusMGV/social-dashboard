@@ -1,10 +1,52 @@
+import { useEffect, useState } from 'react'
+import ErrorMessage from '../components/ErrorMessage'
+import LoadingMessage from '../components/LoadingMessage'
+import PostCard from '../components/PostCard'
+import { getPosts, getUsers } from '../lib/api'
+
+function getAuthorName(users, userId) {
+  const user = users.find((currentUser) => currentUser.id === userId)
+  return user ? user.name : 'Unknown user'
+}
+
 function PostsPage() {
+  const [posts, setPosts] = useState([])
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    Promise.all([getPosts(), getUsers()])
+      .then(([postsData, usersData]) => {
+        setPosts(postsData)
+        setUsers(usersData)
+      })
+      .catch(() => {
+        setError('Could not load posts.')
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }, [])
+
   return (
     <section>
       <h1 className="mb-4 text-2xl font-bold">Posts</h1>
-      <div className="rounded border bg-white p-4">
-        <p className="text-gray-600">post list page</p>
-      </div>
+
+      {loading && <LoadingMessage message="Loading posts..." />}
+      {error && <ErrorMessage message={error} />}
+
+      {!loading && !error && (
+        <div className="grid gap-4">
+          {posts.map((post) => (
+            <PostCard
+              key={post.id}
+              post={post}
+              authorName={getAuthorName(users, post.userId)}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }

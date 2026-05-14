@@ -14,6 +14,14 @@ export function getUsers() {
   return request('/users')
 }
 
+export function getUser(userId) {
+  return request(`/users/${userId}`)
+}
+
+export function getPosts() {
+  return request('/posts')
+}
+
 export function getPostsByUser(userId) {
   return request(`/posts?userId=${userId}`)
 }

@@ -3,18 +3,20 @@ import { useParams } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingMessage from '../components/LoadingMessage'
 import PostCard from '../components/PostCard'
-import { getPostsByUser } from '../lib/api'
+import { getPostsByUser, getUser } from '../lib/api'
 
 function UserPostsPage() {
   const { userId } = useParams()
   const [posts, setPosts] = useState([])
+  const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
-    getPostsByUser(userId)
-      .then((data) => {
-        setPosts(data)
+    Promise.all([getPostsByUser(userId), getUser(userId)])
+      .then(([postsData, userData]) => {
+        setPosts(postsData)
+        setUser(userData)
       })
       .catch(() => {
         setError('Could not load posts for this user.')
@@ -26,7 +28,9 @@ function UserPostsPage() {
 
   return (
     <section>
-      <h1 className="mb-4 text-2xl font-bold">Posts by user {userId}</h1>
+      <h1 className="mb-4 text-2xl font-bold">
+        Posts by {user ? user.name : `user ${userId}`}
+      </h1>
 
       {loading && <LoadingMessage message="Loading posts..." />}
       {error && <ErrorMessage message={error} />}
@@ -34,7 +38,7 @@ function UserPostsPage() {
       {!loading && !error && (
         <div className="grid gap-4">
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <PostCard key={post.id} post={post} authorName={user?.name} />
           ))}
         </div>
       )}
