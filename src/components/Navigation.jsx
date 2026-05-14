@@ -11,7 +11,7 @@ function Navigation({ onLogout, user }) {
 
   return (
     <header className="sticky top-0 z-10 border-b border-gray-200 bg-white">
-      <div className="mx-auto max-w-5xl p-4">
+      <div className="mx-auto max-w-7xl p-4">
         <div className="flex items-center gap-4">
           <Link to="/users" className="text-xl font-bold text-gray-900">
             Social Dashboard

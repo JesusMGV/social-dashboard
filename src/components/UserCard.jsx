@@ -13,7 +13,12 @@ function UserCard({ user }) {
           >
             {user.name}
           </Link>
-          <p className="mt-2 text-gray-500">{user.email}</p>
+          <a
+            href={`mailto:${user.email}`}
+            className="mt-2 block text-emerald-700 hover:underline"
+          >
+            {user.email}
+          </a>
         </div>
 
       </div>

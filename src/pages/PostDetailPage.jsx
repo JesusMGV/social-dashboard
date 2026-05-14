@@ -52,9 +52,11 @@ function PostDetailPage() {
 
       {!loading && !error && post && (
         <>
-          <div className="rounded-md border border-gray-200 bg-white p-4 shadow-sm">
-            <p className="text-gray-500">By {user ? user.name : 'Unknown user'}</p>
-            <h1 className="mt-2 text-2xl font-bold text-gray-900">
+          <div className="rounded-md border border-gray-200 bg-white p-6 shadow-sm">
+            <p className="text-sm font-medium text-emerald-700">
+              {user ? user.name : 'Unknown user'}
+            </p>
+            <h1 className="mt-6 text-2xl font-bold text-gray-900">
               {capitalize(post.title)}
             </h1>
             <p className="mt-4 text-gray-600">{capitalize(post.body)}</p>

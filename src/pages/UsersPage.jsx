@@ -32,7 +32,7 @@ function UsersPage() {
       {error && <ErrorMessage message={error} />}
 
       {!loading && !error && (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {users.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
