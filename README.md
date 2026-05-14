@@ -2,6 +2,7 @@
 
 A React dashboard for viewing users, posts, and comments from the JSONPlaceholder API. The app uses GitHub OAuth for login and runs on Cloudflare Pages.
 
+Live deployment: https://social-dashboard-6h4.pages.dev/
 
 ## Setup
 
@@ -35,13 +36,6 @@ For local development, the GitHub OAuth callback URL should be:
 http://localhost:8788/api/auth/callback
 ```
 
-## FOR PRODUCTION 
-`OAUTH_REDIRECT_URI` should match the callback URL, for example:
-
-```txt
-https://your-site.pages.dev/api/auth/callback
-```
-
 Run the app with Cloudflare Pages Functions locally:
 
 ```bash
@@ -64,6 +58,7 @@ The challenge says "Click post -> view comments." I kept a clear "View comments"
 
 ## Challenges
 
-The biggest challenge was the time constraint, this lead to less testing that I would have liked to do, so quality was impacted, also I was not able to learn as much as I would have liked about Cloudflare pages and Github Oauth.
-
-
+The biggest challenge was the time constraint, this lead to:
+- Less testing that I would have liked to do.
+- To me not being able to learn as much as I would have liked about Cloudflare pages and Github Oauth before implementation.
+- Styling to not be as polished.
